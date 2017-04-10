@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.embed.swing.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="440.0" prefWidth="758.0" style="-fx-background-color: #bed8df;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imagemorph.FXMLMorphController">
+    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="238.0" layoutX="15.0" layoutY="29.0" stroke="#827474" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="350.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="160.0" layoutX="15.0" layoutY="285.0" stroke="#827474" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="350.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="416.0" layoutX="384.0" layoutY="29.0" stroke="#827474" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="OUTSIDE" strokeWidth="2.0" width="368.0" />
+        <Button fx:id="buttonStartMorphing" disable="true" layoutX="26.0" layoutY="343.0" onAction="#handleStartMorphing" prefHeight="41.0" prefWidth="158.0" text="START" />
+        <Label layoutX="26.0" layoutY="414.0" prefHeight="17.0" prefWidth="63.0" text="Last status:" />
+        <Label fx:id="labelStatus" layoutX="87.0" layoutY="414.0" prefHeight="17.0" prefWidth="270.0" text="None of the resources loaded." />
+        <Label layoutX="198.0" layoutY="305.0" prefHeight="17.0" prefWidth="102.0" text="Morphing frames:" />
+        <Label layoutX="198.0" layoutY="335.0" prefHeight="17.0" prefWidth="122.0" text="Frames per second:" />
+
+        <TextField fx:id="textFieldFrames" alignment="CENTER_RIGHT" layoutX="317.0" layoutY="301.0" prefHeight="25.0" prefWidth="35.0" />
+        <TextField fx:id="textFieldSpeed" alignment="CENTER_RIGHT" layoutX="317.0" layoutY="331.0" prefHeight="25.0" prefWidth="35.0" text="5" />
+
+        <ProgressBar fx:id="progressBar" layoutX="25.0" layoutY="391.0" prefHeight="18.0" prefWidth="329.0" progress="0.0" />
+        <Button fx:id="buttonInitialImg" layoutX="25.0" layoutY="228.0" onAction="#handleInitialImgBtn" prefHeight="25.0" prefWidth="76.0" text="Load" />
+        <Button fx:id="buttonTargetImg" layoutX="198.0" layoutY="228.0" onAction="#handleTargetImgBtn" prefHeight="25.0" prefWidth="76.0" text="Load" />
+        <Button fx:id="buttonInitialClear" layoutX="107.0" layoutY="228.0" onAction="#handleInitialImgClearBtn" prefHeight="25.0" prefWidth="76.0" text="Clear" />
+        <Button fx:id="buttonTargetClear" layoutX="280.0" layoutY="228.0" onAction="#handleTargetImgClearBtn" prefHeight="25.0" prefWidth="76.0" text="Clear" />
+        <Button fx:id="buttonPlay" disable="true" layoutX="399.0" layoutY="410.0" mnemonicParsing="false" onAction="#handlePlay" prefHeight="25.0" prefWidth="63.0" text="Play" />
+        <Button fx:id="buttonMeshScreen" disable="true" layoutX="26.0" layoutY="294.0" onAction="#handleMeshScreen" prefHeight="41.0" prefWidth="158.0" text="MESH" />
+
+        <Pane layoutX="25.0" layoutY="59.0" prefHeight="160.0" prefWidth="158.0" style="-fx-background-color: #D3D3D3;">
+            <children>
+                <ImageView fx:id="imageViewInitial" fitHeight="144.0" fitWidth="144.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/img/default.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        <Pane layoutX="198.0" layoutY="59.0" prefHeight="160.0" prefWidth="158.0" style="-fx-background-color: #D3D3D3;">
+            <children>
+                <ImageView fx:id="imageViewTarget" fitHeight="144.0" fitWidth="144.0" layoutX="7.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/img/default.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        
+        <Label layoutX="61.0" layoutY="35.0" prefHeight="18.0" prefWidth="87.0" text="Initial image" textAlignment="CENTER" textFill="#867979">
+            <font>
+                <Font name="Century Gothic Bold" size="14.0" />
+            </font>
+        </Label>
+        <Label layoutX="234.0" layoutY="35.0" prefHeight="17.0" prefWidth="87.0" text="Target image" textFill="#867979">
+            <font>
+                <Font name="Century Gothic Bold" size="13.0" />
+            </font>
+        </Label>
+        <Slider fx:id="slider" disable="true" layoutX="472.0" layoutY="410.0" prefHeight="25.0" prefWidth="263.0" />
+        <Label layoutX="504.0" layoutY="36.0" prefHeight="17.0" prefWidth="133.0" text="Morphing animation" textFill="#867979">
+            <font>
+                <Font name="Century Gothic Bold" size="13.0" />
+            </font>
+        </Label>
+        <Pane layoutX="398.0" layoutY="61.0" prefHeight="340.0" prefWidth="340.0" style="-fx-background-color: #D3D3D3;">
+            <children>
+                <ImageView fx:id="imageViewAnimation" fitHeight="325.0" fitWidth="325.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../assets/img/default.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </Pane>
+        
+        <MenuBar layoutX="-1.0" layoutY="-2.0" prefHeight="25.0" prefWidth="768.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="File">
+                    <items>
+                  <MenuItem fx:id="menuItemSaveAnimation" disable="true" mnemonicParsing="false" onAction="#handleSaveAnimation" text="Save animation (GIF)" />
+                        <MenuItem mnemonicParsing="false" onAction="#handleExit" text="Exit" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <CheckMenuItem fx:id="limitCheck" mnemonicParsing="false" onAction="#handleMaxPanelSize" selected="false" text="Max panel size 500x500" />
+               </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                    <items>
+                        <MenuItem fx:id="menuItemAbout" mnemonicParsing="false" onAction="#handleAbout" text="About" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+    
+    </children>
+</AnchorPane>
