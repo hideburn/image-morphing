@@ -1,2 +1,2 @@
 # image-morphing
-Image Processing project implemented using JavaFX and SwingUI.
+Image Processing desktop app implemented using JavaFX and SwingUI.
